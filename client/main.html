@@ -1,0 +1,33 @@
+<head>
+  <title>Analytical Dashboard</title>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Welcome to Analytical Dashboard!</h1>
+    <br />
+    <button class="generate-btn" type="button">Generate</button>
+    <br />
+    <button class="reset-btn" type="button">Reset</button>
+    <br />
+    <button class="delete-btn" type="button">Delete</button>
+    <br />
+    <button class="expire-btn" type="button">Expire</button>
+    <br />
+    <button class="analytics-btn" type="button">Analytics</button>
+    <br />
+    <button class="list-btn" type="button">List</button>
+    <br />
+
+    <ul class="collection">
+      {{#each users}}
+      {{> user}}
+      {{/each}}
+
+    </ul>
+  </div>
+</body>
+
+<template name="user">
+  <li class="collection-item">{{username}}-{{firstname}}--{{activeIndicator}}--{{expiryDate}}</li>
+</template>
