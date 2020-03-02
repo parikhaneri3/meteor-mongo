@@ -18,16 +18,58 @@
     <br />
     <button class="list-btn" type="button">List</button>
     <br />
-
-    <ul class="collection">
-      {{#each users}}
-      {{> user}}
-      {{/each}}
-
-    </ul>
+    <table id="example" class="ui celled table" style="width:100%">
+      <thead>
+        <tr>
+          <th>Firstname</th>
+          <th>Lastname</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Title</th>
+          <th>Product</th>
+          <th>Company</th>
+          <th>City</th>
+          <th>State</th>
+          <th>Country</th>
+          <th>ActiveIndicator</th>
+          <th>ExpiryDate</th>
+          <th>EffectiveDate</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each users}}
+        {{> userList}}
+        {{/each}}
+      </tbody>
+    </table>
+    {{>pieDemo}}
   </div>
 </body>
 
-<template name="user">
-  <li class="collection-item">{{username}}-{{firstname}}--{{activeIndicator}}--{{expiryDate}}</li>
+<template name="noRoutesTemplate"></template>
+
+<template name="analytics">
+</template>
+
+<template name="pieDemo">
+  <h2>Pie Chart</h2>
+  <div id="container-pie" style="width: 300px; height: 200px;"></div>
+</template>
+
+<template name="userList">
+  <tr>
+    <td>{{firstname}}</td>
+    <td>{{lastname}}</td>
+    <td>{{username}}</td>
+    <td>{{email}}</td>
+    <td>{{title}}</td>
+    <td>{{product}}</td>
+    <td>{{company}}</td>
+    <td>{{city}}</td>
+    <td>{{state}}</td>
+    <td>{{country}}</td>
+    <td>{{activeIndicator}}</td>
+    <td>{{expiryDate}}</td>
+    <td>{{effectiveDate}}</td>
+  </tr>
 </template>

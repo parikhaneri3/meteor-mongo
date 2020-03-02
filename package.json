@@ -10,7 +10,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.8.4",
-    "jquery": "^3.4.1",
+    "datatables.net-bs": "^1.10.20",
+    "jquery": "^1.11.2",
     "meteor-node-stubs": "^1.0.0"
   },
   "meteor": {
@@ -19,5 +20,8 @@
       "server": "server/main.js"
     },
     "testModule": "tests/main.js"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0"
   }
 }

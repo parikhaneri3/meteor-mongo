@@ -8,6 +8,27 @@ Meteor.startup(() => {
   });
 
   Meteor.methods({
+
+    insertAllUsers: function () {
+      for (i = 0; i < 1; i++) {
+        Users.insert({
+          firstname: faker.name.firstName(),
+          lastname: faker.name.lastName(),
+          username: faker.internet.userName(),
+          email: faker.internet.email(),
+          title: faker.name.jobTitle(),
+          product: faker.commerce.productName(),
+          company: faker.company.companyName(),
+          city: faker.address.city(),
+          state: faker.address.state(),
+          country: faker.address.country(),
+          activeIndicator: 'Y',
+          effectiveDate: new Date(),
+          expiryDate: ''
+        });
+      };
+    },
+
     resetAllUsers: function () {
       return Users.remove({});
     },
@@ -28,8 +49,8 @@ Meteor.startup(() => {
       });
     },
 
-    listAllUsers: function () {
-      Users.find({});
+    findAllUsers: function () {
+      Users.find();
     },
   });
 });

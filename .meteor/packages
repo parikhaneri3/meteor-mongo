@@ -23,3 +23,13 @@ insecure@1.0.7                # Allow all DB writes from clients (for prototypin
 reactive-dict
 gbit:faker
 iron:router
+navybits:pagination
+kurounin:pagination
+meteortesting:mocha
+practicalmeteor:chai
+hwillson:stub-collections
+practicalmeteor:sinon
+nvd3:nvd3
+anychart:anychart
+maazalik:highcharts
+aldeed:tabular

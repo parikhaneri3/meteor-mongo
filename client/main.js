@@ -1,10 +1,14 @@
 import { Template } from 'meteor/templating';
 import { Users } from '../lib/collections.js';
 import { ReactiveDict } from 'meteor/reactive-dict';
+import { $ } from 'meteor/jquery';
+import dataTablesBootstrap from 'datatables.net-bs';
+import 'datatables.net-bs/css/dataTables.bootstrap.css';
+import '../build/jquery-3.3.1.js';
+import '../build/jquery.dataTables.min.js'
+dataTablesBootstrap(window, $);
 
 import './main.html';
-import './analytics.html';
-c3charts = {};
 
 Template.body.helpers({
   users() {
@@ -14,26 +18,8 @@ Template.body.helpers({
 
 Template.body.events({
   'click .generate-btn'(event) {
-    // Prevent default browser form submit
     event.preventDefault();
-    // Insert a task into the collection
-    for (i = 0; i < 1; i++){
-      Users.insert({
-        firstname: faker.name.firstName(),
-        lastname: faker.name.lastName(),
-        username: faker.internet.userName(),
-        email: faker.internet.email(),
-        title: faker.name.jobTitle(),
-        product: faker.commerce.productName(),
-        company: faker.company.companyName(),
-        city: faker.address.city(),
-        state: faker.address.state(),
-        country: faker.address.country(),
-        activeIndicator: 'Y',
-        effectiveDate: new Date(),
-        expiryDate: ''
-      });
-    };
+    Meteor.call('insertAllUsers')
   },
   'click .reset-btn'(event) {
     Meteor.call('resetAllUsers')
@@ -49,7 +35,6 @@ Template.body.events({
   },
   'click .list-btn'(event) {
     Router.go('/list');
-    Meteor.call('listAllUsers')
   },
 });
 
@@ -57,3 +42,74 @@ Template.body.onCreated(function bodyOnCreated() {
   this.state = new ReactiveDict();
   Meteor.subscribe('users');
 });
+
+Router.configure({
+  noRoutesTemplate: 'noRoutesTemplate',
+});
+
+Template.pieDemo.rendered = function () {
+  var data = new Array();
+
+  data.push({
+    name: 'ActiveIndicator-Y',
+    y: 100,
+    color: '#55BF3B'
+  });
+
+  data.push({
+    name: 'ActiveIndicator-N',
+    y: 12,
+    color: '#DDDF0D'
+  });
+
+  $('#container-pie').highcharts({
+    chart: {
+      plotBackgroundColor: null,
+      plotBorderWidth: null,
+      plotShadow: false
+    },
+
+    title: {
+      text: ''
+    },
+
+    credits: {
+      enabled: false
+    },
+
+    tooltip: {
+      pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+    },
+
+    plotOptions: {
+      pie: {
+        allowPointSelect: true,
+        cursor: 'pointer',
+        dataLabels: {
+          enabled: false
+        },
+        showInLegend: true
+      }
+    },
+
+    series: [{
+      type: 'pie',
+      name: 'Anteil',
+      data: [{
+        name: 'ActiveIndicator-Y',
+        y: 61.41,
+        sliced: true,
+        selected: true,
+        color: '#55BF3B'
+      }, {
+        name: 'ActiveIndicator-N',
+        y: 11.84,
+        color: '#000000'
+      }]
+    }]
+  });
+}
+
+Template.userList.rendered = function () {
+  $('#example').DataTable();
+}
