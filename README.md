@@ -1,6 +1,6 @@
-#Meteor with MongoDB
+###Meteor with MongoDB
 
-This project depicts an analytical dashboard which has few buttons which generates data.
+This project depicts an analytical dashboard with charts and datatables.
 
 **Functionalities:**
 - A `Generate` data button generates 10k rows of random data in MongoDB.
