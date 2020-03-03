@@ -2,11 +2,11 @@
   "name": "meteor-mongo",
   "private": true,
   "scripts": {
-    "start": "meteor run",
+    "start": "MONGO_URL=mongodb://cluster0-shard-00-01-dxpl5.mongodb.net:27017/capitaldk meteor run",
     "test": "meteor test --once --driver-package meteortesting:mocha",
     "test-app": "TEST_WATCH=1 meteor test --full-app --driver-package meteortesting:mocha",
     "visualize": "meteor --production --extra-packages bundle-visualizer",
-    "meteor": "MONGO_URL=mongodb://127.0.0.1:3001/meteor"
+    "meteor": "MONGO_URL=mongodb://cluster0-shard-00-01-dxpl5.mongodb.net:27017/capitaldk"
   },
   "dependencies": {
     "@babel/runtime": "^7.8.4",
