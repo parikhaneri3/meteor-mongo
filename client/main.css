@@ -1,3 +1,17 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 0;
+  padding: 0;
+}
+.bttn {
+  float: left;
+  padding: 10px 20px;
+  margin: 10px;
+  border-radius: 5px;
+}
 .generate-btn {
   font-weight: bold;
   background: green;
