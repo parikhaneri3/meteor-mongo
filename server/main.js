@@ -10,7 +10,7 @@ Meteor.startup(() => {
   Meteor.methods({
 
     insertAllUsers: function () {
-      for (i = 0; i < 1; i++) {
+      for (i = 0; i < 9999; i++) {
         Users.insert({
           firstname: faker.name.firstName(),
           lastname: faker.name.lastName(),
@@ -22,7 +22,7 @@ Meteor.startup(() => {
           city: faker.address.city(),
           state: faker.address.state(),
           country: faker.address.country(),
-          activeIndicator: 'Y',
+          activeIndicator: anyActiveIndicator(),
           effectiveDate: new Date(),
           expiryDate: ''
         });
@@ -54,3 +54,10 @@ Meteor.startup(() => {
     },
   });
 });
+
+function anyActiveIndicator(){
+  var randomString;
+  var arr = ['Y', 'N'];
+  randomString = arr[Math.floor(Math.random() * arr.length)]; 
+  return randomString;
+}

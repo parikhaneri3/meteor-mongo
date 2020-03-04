@@ -49,38 +49,21 @@ Router.configure({
 
 Template.pieDemo.rendered = function () {
   var data = new Array();
-
-  data.push({
-    name: 'ActiveIndicator-Y',
-    y: 100,
-    color: '#55BF3B'
-  });
-
-  data.push({
-    name: 'ActiveIndicator-N',
-    y: 12,
-    color: '#DDDF0D'
-  });
-
   $('#container-pie').highcharts({
     chart: {
       plotBackgroundColor: null,
       plotBorderWidth: null,
       plotShadow: false
     },
-
     title: {
       text: ''
     },
-
     credits: {
       enabled: false
     },
-
     tooltip: {
       pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
     },
-
     plotOptions: {
       pie: {
         allowPointSelect: true,
@@ -91,7 +74,6 @@ Template.pieDemo.rendered = function () {
         showInLegend: true
       }
     },
-
     series: [{
       type: 'pie',
       name: 'Anteil',
